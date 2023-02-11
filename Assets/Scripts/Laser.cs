@@ -9,12 +9,9 @@ public class Laser : MonoBehaviour
     void Update()
     {
         // gerakan laser ke atas
-        //Vector3 direction = new Vector3(0, 1, 0);
-        //transform.Translate(direction * speed * Time.deltaTime);
-
-        //OR
         transform.Translate(Vector3.up * speed * Time.deltaTime);
 
+        // Hancurkan Laser
         if (transform.position.y >= 8f)
         {
             Destroy(this.gameObject);

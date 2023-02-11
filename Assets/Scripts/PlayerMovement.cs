@@ -15,6 +15,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float _canFire = -1f;
 
+    [SerializeField]
+    private float _lives = 3;
+
     void Start()
     {
         transform.position = new Vector3(0, 0, 0);
@@ -55,9 +58,17 @@ public class PlayerMovement : MonoBehaviour
     void FireLaser()
     {
         //spawn laser
-        
             _canFire = Time.time + _fireRate;
             Instantiate(_laserPrefab, transform.position + new Vector3(0, 0.8f, 0), Quaternion.identity);
-        
+    }
+
+    public void Damage()
+    {
+        _lives--;
+
+        if (_lives < 1)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

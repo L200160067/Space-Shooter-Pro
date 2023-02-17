@@ -66,6 +66,8 @@ public class PlayerMovement : MonoBehaviour
     {
         _lives--;
 
+        //komunikasikan dengan spawn manager
+        //jika player mati spawn berhenti
         if (_lives < 1)
         {
             Destroy(this.gameObject);

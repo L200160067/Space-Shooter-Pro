@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
         if (transform.position.y <= -5f)
         {
             transform.position = new Vector3(Random.Range(-8.0f, 8.0f), 7f, 0);
-
+            //Destroy(this.gameObject);
             //atau 
             //float randomX = Random.Range(-8.0f, 8.0f);
             //transform.position = new Vector3(randomX, 7f, 0);

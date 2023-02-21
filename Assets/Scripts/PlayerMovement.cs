@@ -17,10 +17,20 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     private float _lives = 3;
+    private SpawnManager _spawnManager;
+
+    [SerializeField]
+    private GameObject _laserContainer;
 
     void Start()
     {
         transform.position = new Vector3(0, 0, 0);
+        _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>();
+
+        if (_spawnManager == null)
+        {
+            Debug.LogError("The Spawn Manager is Null");
+        }
     }
 
     // Update is called once per frame
@@ -59,7 +69,8 @@ public class PlayerMovement : MonoBehaviour
     {
         //spawn laser
             _canFire = Time.time + _fireRate;
-            Instantiate(_laserPrefab, transform.position + new Vector3(0, 0.8f, 0), Quaternion.identity);
+            GameObject newLaser = Instantiate(_laserPrefab, transform.position + new Vector3(0, 0.8f, 0), Quaternion.identity);
+            newLaser.transform.parent = _laserContainer.transform;
     }
 
     public void Damage()
@@ -70,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
         //jika player mati spawn berhenti
         if (_lives < 1)
         {
+           _spawnManager.OnPlayerDeath();
             Destroy(this.gameObject);
         }
     }

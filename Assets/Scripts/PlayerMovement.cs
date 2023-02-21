@@ -42,7 +42,6 @@ public class PlayerMovement : MonoBehaviour
         {
             FireLaser();
         }
-        
     }
 
     void CalculateMovement()

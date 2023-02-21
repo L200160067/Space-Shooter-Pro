@@ -11,7 +11,6 @@ public class Laser : MonoBehaviour
     
     void Update()
     {
-       
         // gerakan laser ke atas
         transform.Translate(Vector3.up * _speed * Time.deltaTime);
 

@@ -11,21 +11,24 @@ public class Powerup : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.down * _speed * Time.deltaTime);
+
+        if (transform.position.y < -4.5f)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
-            //damage player
             PlayerMovement player = other.transform.GetComponent<PlayerMovement>();
-
             if (player != null)
             {
-                player.Damage();
+                player.TripleShotActive();
             }
-
             Destroy(this.gameObject);
+            
         }
     }
 

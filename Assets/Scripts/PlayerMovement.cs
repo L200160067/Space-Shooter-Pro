@@ -23,9 +23,6 @@ public class PlayerMovement : MonoBehaviour
     private SpawnManager _spawnManager;
 
     [SerializeField]
-    private GameObject _laserContainer;
-
-    [SerializeField]
     private bool _isTripleShotActive = false;
 
     
@@ -81,12 +78,12 @@ public class PlayerMovement : MonoBehaviour
         if ( _isTripleShotActive == true )
         {
             GameObject newLaser = Instantiate(_triplelaserPrefab, transform.position, Quaternion.identity);
-            newLaser.transform.parent = _laserContainer.transform;
+           
         }
         else 
         {
             GameObject newLaser = Instantiate(_laserPrefab, transform.position + new Vector3(0, 1.05f, 0), Quaternion.identity);
-            newLaser.transform.parent = _laserContainer.transform;
+           
         }
            
     }
